@@ -1,0 +1,31 @@
+src/
+├── App.vue
+├── main.js
+├── router/
+│   └── index.js          # Vue Router configuration
+├── store/
+│   └── index.js          # Vuex / Pinia store for global state
+├── assets/
+│   └── images, icons, fonts
+├── components/
+│   ├── Header.vue
+│   ├── Footer.vue
+│   ├── AssignmentCard.vue
+│   ├── RitualCard.vue
+│   ├── ProgressBar.vue
+│   └── Badge.vue
+├── views/
+│   ├── Home.vue
+│   ├── Dashboard.vue
+│   ├── Assignments.vue
+│   ├── Rituals.vue
+│   ├── History.vue
+│   ├── Community.vue
+│   ├── Profile.vue
+│   └── Settings.vue
+├── services/
+│   ├── api.js             # Handles API calls (tasks, user data, content)
+│   └── notifications.js
+└── utils/
+    ├── gamification.js    # Rank logic, points, streaks
+    └── dateHelpers.js

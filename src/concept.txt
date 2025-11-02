@@ -1,0 +1,68 @@
+Name (placeholder): Divine Lifecoaches
+
+Goal: Give users a sense of purpose, belonging, and accomplishment through voluntary “discipleship” of a symbolic Divine Leader.
+
+Core Themes:
+
+History: Humans have always sought guidance from leaders or divine figures (Pharaohs, Tsars, gurus).
+
+Psychology: Ritual, goal-setting, and participation in a larger purpose increase motivation and fulfillment.
+
+Modern adaptation: A voluntary, safe, interactive, gamified experience.
+
+Page/View	Description
+Home	Explains the human need to belong and the historical parallels (Pharaohs, Tsars, religion). CTA: “Join the Royal Path.”
+Dashboard	Personalized view of user’s goals, assignments, and achievements. Shows “rank” in discipleship hierarchy.
+Assignments	List of current tasks/missions given by the Divine Coach. Allows marking progress and completion.
+Rituals	Optional daily or weekly routines (journaling, reflection, mini-challenges). Gamified with points.
+History & Lore	Educational content about ancient monarchs, divine leadership, and the psychological benefits of purpose.
+Community	Feed or forum for disciples to share progress, achievements, or reflections. Optional social features.
+Profile & Rank	User profile, rank within the system, badges, streaks, and historical lineage of achievements.
+Settings	Notifications, privacy, theme, account management.
+3. Core Features
+
+User System
+
+Authentication: OAuth/email signup.
+
+Profile data: name, avatar, discipleship rank, points.
+
+Optional anonymity for privacy.
+
+Goal/Assignment Tracking
+
+Leader-defined tasks (e.g., “Meditate 10 min,” “Journal a reflection,” “Complete a challenge”).
+
+Task completion, streaks, and rewards.
+
+Gamification
+
+Ranks: Initiate → Knight → Countess → Divine Royalty.
+
+Points and badges for completing assignments.
+
+Daily/weekly streaks.
+
+Content Management
+
+Articles, historical narratives, rituals.
+
+Ability for admins (the Divine Coach) to post new missions, reflections, or guidance.
+
+Community Interaction
+
+Optional comments on tasks/rituals.
+
+Public leaderboard or private progress comparison.
+
+Notifications
+
+Daily reminders for rituals, new assignments, streak alerts.
+
+Achievement notifications.
+
+Analytics
+
+Track user engagement, assignment completion rates, streaks.
+
+Optional reflection tracking (self-reported purpose/wellbeing).

@@ -1,0 +1,40 @@
+// User
+{
+  id: string,
+  name: string,
+  avatar: string,
+  rank: string,
+  points: number,
+  streak: number,
+  assignmentsCompleted: [],
+  ritualsCompleted: []
+}
+
+// Assignment
+{
+  id: string,
+  title: string,
+  description: string,
+  points: number,
+  frequency: 'daily' | 'weekly' | 'one-time',
+  completedBy: [userId]
+}
+
+// Ritual
+{
+  id: string,
+  title: string,
+  description: string,
+  points: number,
+  frequency: 'daily' | 'weekly',
+  completedBy: [userId]
+}
+
+// Badge
+{
+  id: string,
+  title: string,
+  description: string,
+  image: string,
+  criteria: { assignments: number, streak: number, rank: string }
+}
