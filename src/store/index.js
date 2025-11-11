@@ -12,17 +12,22 @@ export function init(){
   state.ready = true
 }
 
-// Temporary "join" action to simulate account creation/sign-in.
-// Until real auth exists, we treat join as creating a basic user and
-// moving to Dashboard via App.vue's conditional rendering.
+// Redirect the user to the centralized login hub instead of simulating a local join.
 export function joinRoyalPath(){
-  state.user = {
-    id: 1,
-    name: 'New Devotee',
-    role: 'devotee',
-    points: 0
+  const env = import.meta.env || {}
+  const isProd = !!env.PROD
+  const base = isProd ? env.VITE_AUTH_LOGIN_BASE_PROD : env.VITE_AUTH_LOGIN_BASE_LOCAL
+  // Fallbacks if env vars are not defined
+  const fallback = isProd ? 'https://liap.ca/login.php' : 'http://localhost/mapmoo/login.php'
+  const target = base || fallback
+  try {
+    const u = new URL(target)
+    u.searchParams.set('site', 'dlc')
+    window.location.href = u.toString()
+  } catch (e) {
+    const sep = target.includes('?') ? '&' : '?'
+    window.location.href = `${target}${sep}site=dlc`
   }
-  state.joined = true
 }
 
 // Namespaced light-weight stores for the new tracker sub-app

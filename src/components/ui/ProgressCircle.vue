@@ -24,3 +24,40 @@ const dashOffset = computed(() => (1 - (props.value/100)) * circumference)
     <div class="label">Progress</div>
   </div>
 </template>
+
+<style scoped>
+.progress-ring {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: min(70vw, 220px);
+  aspect-ratio: 1 / 1;
+  margin: 0 auto;
+}
+.progress-ring svg { width: 100%; height: auto; }
+.value {
+  position: absolute;
+  font-weight: 800;
+  font-size: clamp(22px, 6vw, 28px);
+  letter-spacing: 0.5px;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.35);
+}
+.label {
+  position: absolute;
+  bottom: -8px;
+  font-size: 12px;
+  opacity: 0.9;
+}
+.glow-stroke {
+  filter: drop-shadow(0 0 10px rgba(255, 215, 128, 0.35));
+}
+.pulse { animation: pulse 3s ease-in-out infinite; }
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.02); }
+}
+
+@media (max-width: 380px) {
+  .label { bottom: -6px; }
+}
+</style>

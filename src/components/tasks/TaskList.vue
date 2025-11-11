@@ -9,3 +9,18 @@ const { state, toggleComplete } = useTasksStore()
     <TaskCard v-for="t in state.tasks" :key="t.id" :task="t" @toggle="toggleComplete" />
   </div>
 </template>
+
+<style scoped>
+.tasks-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+
+@media (min-width: 720px) {
+  .tasks-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+}
+</style>
