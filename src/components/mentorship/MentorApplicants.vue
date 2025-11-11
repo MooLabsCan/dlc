@@ -1,12 +1,16 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 import { fetchApplicants, decideApplicant, fetchDevotees } from '../../services/mentorshipService'
+import DevoteeTasksModal from './DevoteeTasksModal.vue'
 
 const loading = ref(true)
 const applicants = ref([])
 const devotees = ref([])
 const deciding = ref(0)
 const error = ref('')
+
+const showTasks = ref(false)
+const selectedDevotee = ref(null)
 
 async function load() {
   loading.value = true
@@ -36,6 +40,8 @@ async function decide(id, decision) {
   }
 }
 
+function openTasks(d){ selectedDevotee.value = d; showTasks.value = true }
+
 onMounted(load)
 </script>
 
@@ -62,11 +68,18 @@ onMounted(load)
     <div class="h2" style="margin-top:16px">Your Devotees</div>
     <div v-if="!devotees.length" class="sub">You have no devotees yet.</div>
     <ul class="devlist">
-      <li v-for="d in devotees" :key="d.une">
-        <div class="dev-name">{{ d.une }}</div>
-        <div class="dev-about">{{ d.about_me || '' }}</div>
+      <li v-for="d in devotees" :key="d.une" class="dev-row">
+        <div class="dev-info">
+          <div class="dev-name">{{ d.une }}</div>
+          <div class="dev-about">{{ d.about_me || '' }}</div>
+        </div>
+        <div class="dev-actions">
+          <button class="accept" @click="openTasks(d)">View Tasks</button>
+        </div>
       </li>
     </ul>
+
+    <DevoteeTasksModal v-model="showTasks" :devotee="selectedDevotee" />
 
     <div v-if="error" class="error">{{ error }}</div>
   </div>
@@ -82,6 +95,8 @@ actions { display:flex; gap: 8px; }
 .accept { background: #065f46; color:#fff; border: none; padding: 8px 10px; border-radius: 8px; cursor: pointer; }
 .reject { background: #7f1d1d; color:#fff; border: none; padding: 8px 10px; border-radius: 8px; cursor: pointer; }
 .devlist { list-style: none; padding: 0; display: grid; gap: 8px; }
+.dev-row { display:flex; justify-content: space-between; align-items: center; gap: 10px; border: 1px solid rgba(255,255,255,0.08); border-radius: 10px; padding: 10px; }
+.dev-info { flex: 1; }
 .dev-name { font-weight: 600; }
 .dev-about { opacity: 0.8; font-size: 13px; }
 .error { color: #b00020; margin-top: 8px; }

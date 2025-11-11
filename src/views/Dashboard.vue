@@ -4,6 +4,7 @@ import ProgressCircle from '../components/ui/ProgressCircle.vue'
 import TaskList from '../components/tasks/TaskList.vue'
 import AcknowledgementFeed from '../components/dashboard/AcknowledgementFeed.vue'
 import RankStatus from '../components/dashboard/RankStatus.vue'
+import Calendar from '../components/ui/Calendar.vue'
 import MentorPicker from '../components/mentorship/MentorPicker.vue'
 import { useTasksStore } from '../store'
 import { useUserStore } from '../stores/user'
@@ -35,6 +36,10 @@ const userStore = useUserStore()
           <AcknowledgementFeed />
         </div>
         <RankStatus />
+        <div class="card section-card">
+          <div class="h2">Calendar</div>
+          <Calendar />
+        </div>
       </div>
     </div>
   </div>

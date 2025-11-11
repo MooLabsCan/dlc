@@ -1,27 +1,16 @@
 // Auth service to handle token-based session validation after redirect from login hub
 import { useUserStore } from '../stores/user'
 
-function getApiEndpoint() {
-  // Determine backend API base depending on where the frontend is running
-  const origin = window.location.origin
-  // If running on Vite dev server (usually :5173), call XAMPP backend under /dlc/back/api
-  if (/^http:\/\/localhost:5173$/i.test(origin)) {
-    return 'http://localhost/dlc/back/api/check_session.php'
-  }
-  // If served from a site domain (e.g., https://liap.ca/dlc), try relative path to back/api
-  // In many shared-host setups, /dlc/back/api is reachable from the same origin
-  // Use absolute path from origin if site root hosts the project under /dlc
-  // Attempt same-origin relative path first; fallback to absolute with /dlc prefix
-  try {
-    // Prefer relative to avoid cross-origin when deployed together
-    return new URL('/dlc/back/api/check_session.php', origin).toString()
-  } catch (e) {
-    return origin + '/dlc/back/api/check_session.php'
-  }
-}
+// Decide URL path for check_session via env with default to same-origin /back dir
+const isDev = typeof import.meta !== 'undefined' && !!import.meta.env?.DEV
+// In dev, backend runs on a different port; use full localhost path. In prod, use relative path.
+export const CHECK_SESSION_URL = (
+  import.meta.env?.VITE_AUTH_CHECK_SESSION_URL
+  || (isDev ? 'http://localhost/dlc/back/api/check_session.php' : '/back/api/check_session.php')
+)
 
 export async function validateToken(token) {
-  const url = getApiEndpoint()
+  const url = CHECK_SESSION_URL
   try {
     const res = await fetch(url, {
       method: 'POST',
