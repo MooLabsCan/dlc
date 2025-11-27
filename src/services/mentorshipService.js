@@ -6,9 +6,9 @@ function backendUrl(path) {
     return `http://localhost/dlc/back/${path}`
   }
   try {
-    return new URL(`/dlc/back/${path}`, origin).toString()
+    return new URL(`/back/${path}`, origin).toString()
   } catch (e) {
-    return origin + `/dlc/back/${path}`
+    return origin + `/back/${path}`
   }
 }
 
